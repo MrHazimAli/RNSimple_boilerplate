@@ -24,6 +24,7 @@ if (__DEV__) {
 const config = {
 	key: 'root',
 	storage,
+	transforms: [immutableTransform()],
 	blacklist: ['nav'],
 	debug: true
 }
