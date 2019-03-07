@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withNamespaces } from 'react-i18next';
 
 import * as CounterActions from '../actions/counter';
 
@@ -18,7 +19,7 @@ import * as CounterActions from '../actions/counter';
 	},
 	dispatch => bindActionCreators(CounterActions, dispatch)
 )
-export default class Launch extends Component {
+class Launch extends Component {
 
 	Add = () => {
 		this.props.increment();
@@ -30,11 +31,11 @@ export default class Launch extends Component {
 
   render() {
 
-  	const { counter } = this.props;
+  	const { counter, t } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Home</Text>
+        <Text style={styles.title}>{t('title')}</Text>
         <Text style={styles.text}>{counter}</Text>
         
         <View style={styles.buttonContainer}>
@@ -73,3 +74,5 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10
 	}
 })
+
+export default withNamespaces()(Launch);

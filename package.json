@@ -7,8 +7,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "i18next": "^15.0.6",
     "immutable": "^4.0.0-rc.12",
     "react": "16.6.3",
+    "react-i18next": "^9.0.10",
     "react-native": "0.58.6",
     "react-native-gesture-handler": "^1.0.17",
     "react-navigation": "^3.3.2",
