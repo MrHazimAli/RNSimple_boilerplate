@@ -18,8 +18,6 @@ const config = {
 	debug: true
 }
 
-console.log('enhancer', composeEnhancers)
-
 const persistedReducer = persistReducer(config, rootReducers);
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
