@@ -8,18 +8,7 @@ import thunk from 'redux-thunk';
 
 import rootReducers from '../reducers';
 
-let composeEnhancers = compose;
-
-if (__DEV__) {
-  // Use it if Remote debugging with RNDebugger, otherwise use remote-redux-devtools
-  /* eslint-disable no-underscore-dangle */
-  composeEnhancers = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
-    require('remote-redux-devtools').composeWithDevTools)({
-    name: Platform.OS,
-    ...require('../../package.json').remotedev
-  });
-  /* eslint-enable no-underscore-dangle */
-}
+let composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const config = {
 	key: 'root',
@@ -28,6 +17,8 @@ const config = {
 	blacklist: ['nav'],
 	debug: true
 }
+
+console.log('enhancer', composeEnhancers)
 
 const persistedReducer = persistReducer(config, rootReducers);
 const enhancer = composeEnhancers(applyMiddleware(thunk));
